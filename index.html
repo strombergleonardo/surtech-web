@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SurTech · Simulador Contable SurTech V2.1 — Innovación y control financiero offline</title>
+  <meta name="description" content="Sitio institucional de SurTech y su Simulador Contable V2.1: automatización del Libro Diario, inventario PEPS, liquidación de IVA y control de vencimientos en una aplicación 100% offline desarrollada en Windows Forms y SQLite.">
+  <meta name="theme-color" content="#0F172A">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%23F97316'/%3E%3Cpath d='M30 16c-1.5-1.9-3.8-3-6.7-3-4.2 0-6.8 2.4-6.8 5.4 0 3.1 2.5 4.6 7 5.6 4.5 1 7 2.5 7 5.6 0 3-2.7 5.4-6.8 5.4-2.9 0-5.2-1.1-6.7-3' fill='none' stroke='%230F172A' stroke-width='3.6' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ══════════════════ NAVBAR ══════════════════ -->
+  <header class="navbar" id="navbar">
+    <nav class="nav-inner container" aria-label="Navegación principal">
+      <a href="#inicio" class="brand" aria-label="SurTech — Inicio">
+        <svg viewBox="0 0 48 48" width="34" height="34" aria-hidden="true">
+          <defs>
+            <linearGradient id="lg-nav" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#FB923C"/><stop offset="1" stop-color="#EA580C"/>
+            </linearGradient>
+          </defs>
+          <rect x="3" y="3" width="42" height="42" rx="12" fill="url(#lg-nav)"/>
+          <path d="M30.5 16.5c-1.6-2-4-3.2-7-3.2-4.4 0-7.2 2.4-7.2 5.5 0 3.1 2.5 4.6 7.2 5.7 4.7 1 7.2 2.5 7.2 5.6 0 3.1-2.8 5.5-7.2 5.5-3 0-5.5-1.2-7.1-3.2" fill="none" stroke="#0F172A" stroke-width="3.4" stroke-linecap="round"/>
+        </svg>
+        <span class="brand-word">Sur<span>Tech</span></span>
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#producto">Producto</a></li>
+        <li><a href="#modulos">Módulos</a></li>
+        <li><a href="#comparativa">Comparativa</a></li>
+        <li class="nav-cta">
+          <button class="btn btn-primary btn-sm" type="button" data-open-modal>Solicitar Presentación</button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ══════════════════ HERO ══════════════════ -->
+    <section id="inicio" class="hero">
+      <div class="glow glow-1" aria-hidden="true"></div>
+      <div class="glow glow-2" aria-hidden="true"></div>
+
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="hero-badge reveal">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            Versión estable · 100% offline
+          </span>
+
+          <h1 class="hero-title reveal" style="--d:.08s">
+            Simulador Contable<br>
+            <span class="text-gradient">SurTech</span>
+            <span class="version-badge">V2.1</span>
+          </h1>
+
+          <p class="hero-lead reveal" style="--d:.16s">
+            Innovación y control financiero offline para la gestión contable y académica.
+          </p>
+          <p class="hero-sub reveal" style="--d:.22s">
+            Automatiza el Libro Diario, el inventario PEPS, la liquidación de IVA y el control
+            de vencimientos — todo en su computadora, sin servidores ni dependencias.
+          </p>
+
+          <div class="hero-ctas reveal" style="--d:.3s">
+            <a href="#modulos" class="btn btn-primary">
+              Ver Módulos
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M19 12l-7 7-7-7"/></svg>
+            </a>
+            <button class="btn btn-ghost" type="button" data-open-modal>
+              Solicitar Presentación
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+
+          <ul class="hero-trust reveal" style="--d:.38s" aria-label="Tecnologías">
+            <li><span aria-hidden="true">✓</span> Windows Forms</li>
+            <li><span aria-hidden="true">✓</span> SQLite embebido</li>
+            <li><span aria-hidden="true">✓</span> Sin instalación de servidores</li>
+          </ul>
+        </div>
+
+        <!-- Ventana del producto (representación visual) -->
+        <div class="hero-visual reveal" style="--d:.2s" aria-hidden="true">
+          <div class="app-window">
+            <div class="app-titlebar">
+              <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+              <span class="app-title">Simulador Contable SurTech — Panel de Control</span>
+            </div>
+            <div class="app-body">
+              <aside class="app-sidebar">
+                <span class="active">Panel</span>
+                <span>Compras</span>
+                <span>Ventas</span>
+                <span>Tesorería y Stock</span>
+                <span>Libro Diario</span>
+                <span>Posición IVA</span>
+              </aside>
+              <div class="app-main">
+                <div class="app-kpis">
+                  <div class="app-kpi"><span>IVA débito fiscal</span><strong>$ 1.240.500</strong></div>
+                  <div class="app-kpi"><span>IVA crédito fiscal</span><strong>$ 842.300</strong></div>
+                  <div class="app-kpi accent"><span>Posición del período</span><strong>$ 398.200</strong></div>
+                </div>
+                <div class="app-chart">
+                  <div class="app-chart-head">
+                    <span>Posición fiscal de IVA — 1.er semestre</span>
+                    <span class="legend"><i class="lg-d"></i>Débito&nbsp;&nbsp;<i class="lg-c"></i>Crédito</span>
+                  </div>
+                  <div class="bars">
+                    <div class="bar-pair"><i class="bar d" style="--h:38%"></i><i class="bar c" style="--h:30%"></i></div>
+                    <div class="bar-pair"><i class="bar d" style="--h:52%"></i><i class="bar c" style="--h:44%"></i></div>
+                    <div class="bar-pair"><i class="bar d" style="--h:46%"></i><i class="bar c" style="--h:58%"></i></div>
+                    <div class="bar-pair"><i class="bar d" style="--h:66%"></i><i class="bar c" style="--h:50%"></i></div>
+                    <div class="bar-pair"><i class="bar d" style="--h:60%"></i><i class="bar c" style="--h:72%"></i></div>
+                    <div class="bar-pair"><i class="bar d" style="--h:78%"></i><i class="bar c" style="--h:64%"></i></div>
+                  </div>
+                  <div class="bar-labels">
+                    <span>Ene</span><span>Feb</span><span>Mar</span><span>Abr</span><span>May</span><span>Jun</span>
+                  </div>
+                </div>
+                <div class="app-rows">
+                  <div class="app-row">
+                    <span class="ico in">↘</span>
+                    <div><strong>Compra F-0012 · Insumos SRL</strong><span>IVA crédito · $ 103.500</span></div>
+                  </div>
+                  <div class="app-row">
+                    <span class="ico out">↗</span>
+                    <div><strong>Venta A-0004 · Cliente Andes</strong><span>IVA débito · $ 184.900 · asiento generado</span></div>
+                  </div>
+                  <div class="app-row">
+                    <span class="ico warn">◷</span>
+                    <div><strong>Cuota por vencer · Cliente Andes</strong><span>Vence en 3 días · $ 96.400</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="float-chip chip-a"><span class="chip-ico">✓</span> Asiento generado en el Libro Diario</div>
+          <div class="float-chip chip-b"><span class="chip-ico">!</span> Vencimiento: Factura A-0004 · 3 días</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════ CIFRAS CLAVE ══════════════════ -->
+    <section class="stats-band" aria-label="Cifras clave del producto">
+      <div class="container stats-grid">
+        <div class="stat reveal">
+          <span class="stat-value"><span data-count="5">5</span></span>
+          <span class="stat-label">Módulos operativos integrados</span>
+        </div>
+        <div class="stat reveal" style="--d:.1s">
+          <span class="stat-value"><span data-count="2">2</span></span>
+          <span class="stat-label">Roles de acceso diferenciados</span>
+        </div>
+        <div class="stat reveal" style="--d:.2s">
+          <span class="stat-value"><span data-count="100">100</span><span class="unit">%</span></span>
+          <span class="stat-label">Funcionamiento offline</span>
+        </div>
+        <div class="stat reveal" style="--d:.3s">
+          <span class="stat-value"><span data-count="1">1</span><span class="unit"> clic</span></span>
+          <span class="stat-label">Efecto dominó contable</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════ 01 · QUIÉNES SOMOS ══════════════════ -->
+    <section id="nosotros" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow reveal"><span class="eyebrow-num">01</span>Quiénes somos</span>
+          <h2 class="reveal" style="--d:.08s">Tecnología con vocación contable</h2>
+          <p class="section-lead reveal" style="--d:.14s">
+            SurTech es el estudio de desarrollo detrás del Simulador Contable: ingeniería
+            de software aplicada a la gestión financiera y a la formación académica.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <p>
+              <strong>SurTech</strong> es una empresa desarrolladora de software de gestión nacida con una
+              convicción simple: la gestión financiera seria no necesita servidores complejos ni
+              conexiones permanentes — necesita herramientas precisas, rápidas y confiables que
+              funcionen exactamente donde el usuario trabaja: en su computadora.
+            </p>
+            <p>
+              Nuestro compromiso es la <strong>excelencia tecnológica con rigor contable</strong>: cada
+              transacción se procesa de forma consistente, cada cálculo respeta la normativa fiscal
+              y cada módulo está diseñado para operar con total autonomía como sistema de escritorio,
+              sin depender de la nube, suscripciones o servicios de terceros.
+            </p>
+            <blockquote class="about-quote">
+              “Contabilidad confiable, tecnología sin fricción.”
+            </blockquote>
+            <div class="about-sign">
+              <svg viewBox="0 0 48 48" width="26" height="26" aria-hidden="true">
+                <defs>
+                  <linearGradient id="lg-sign" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#FB923C"/><stop offset="1" stop-color="#EA580C"/>
+                  </linearGradient>
+                </defs>
+                <rect x="3" y="3" width="42" height="42" rx="12" fill="url(#lg-sign)"/>
+                <path d="M30.5 16.5c-1.6-2-4-3.2-7-3.2-4.4 0-7.2 2.4-7.2 5.5 0 3.1 2.5 4.6 7.2 5.7 4.7 1 7.2 2.5 7.2 5.6 0 3.1-2.8 5.5-7.2 5.5-3 0-5.5-1.2-7.1-3.2" fill="none" stroke="#0F172A" stroke-width="3.4" stroke-linecap="round"/>
+              </svg>
+              <span>SurTech <span class="dot-sep">·</span> Desarrollo de software de gestión</span>
+            </div>
+          </div>
+
+          <div class="about-values">
+            <div class="value-card reveal" style="--d:.1s">
+              <span class="value-icon">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+              </span>
+              <div>
+                <h3>Excelencia tecnológica</h3>
+                <p>Arquitectura en capas, código mantenible y validaciones en cada nivel: la ingeniería detrás de cada pantalla es tan importante como lo que se ve.</p>
+              </div>
+            </div>
+            <div class="value-card reveal" style="--d:.2s">
+              <span class="value-icon icon-blue">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.4-3 8.2-7 9.5-4-1.3-7-5.1-7-9.5V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+              </span>
+              <div>
+                <h3>Precisión transaccional</h3>
+                <p>Las operaciones se registran de forma completa y consistente: stock, asientos e impuestos siempre cuentan la misma historia.</p>
+              </div>
+            </div>
+            <div class="value-card reveal" style="--d:.3s">
+              <span class="value-icon">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+              </span>
+              <div>
+                <h3>Autonomía de escritorio</h3>
+                <p>Sistemas 100% offline: la información vive en el equipo del usuario, sin servidores, suscripciones ni interrupciones.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════ 02 · EL PRODUCTO ══════════════════ -->
+    <section id="producto" class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow reveal"><span class="eyebrow-num">02</span>El producto</span>
+          <h2 class="reveal" style="--d:.08s">Una solución contable integral, offline y a un clic de distancia</h2>
+          <p class="section-lead reveal" style="--d:.14s">
+            El Simulador Contable SurTech es una aplicación de escritorio desarrollada en
+            Windows Forms con base de datos SQLite que automatiza el ciclo contable completo:
+            del comprobante al balance.
+          </p>
+        </div>
+
+        <div class="product-grid">
+          <div class="product-text reveal">
+            <p>
+              Cada compra y cada venta registrada dispara una cadena de procesos automáticos:
+              el inventario se valúa por <strong>PEPS</strong> (primero entrado, primero salido),
+              el <strong>IVA se liquida en tiempo real</strong>, los asientos se generan solos en el
+              <strong>Libro Diario</strong> y el sistema controla los <strong>vencimientos</strong> de
+              cobros y pagos.
+            </p>
+            <p>
+              Es una solución integral pensada para la gestión contable y académica: ideal para
+              cátedras de Administración y Contabilidad que necesitan simular la realidad operativa
+              de una empresa — sin depender de planillas frágiles ni conexiones a internet.
+            </p>
+            <ul class="stack-chips" aria-label="Stack tecnológico">
+              <li class="stack-chip">Windows Forms</li>
+              <li class="stack-chip">SQLite embebido</li>
+              <li class="stack-chip">Visor PDF integrado</li>
+              <li class="stack-chip">Motor de reglas contables</li>
+              <li class="stack-chip">100% offline</li>
+            </ul>
+          </div>
+
+          <div class="flow-card reveal" style="--d:.15s">
+            <h3 class="flow-title">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#FB923C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              El efecto dominó, en un solo clic
+            </h3>
+            <div class="flow-step">
+              <span class="flow-n">1</span>
+              <div><strong>Se registra un comprobante</strong><span>Venta o compra, con su detalle de renglones</span></div>
+            </div>
+            <div class="flow-step">
+              <span class="flow-n">2</span>
+              <div><strong>El stock se actualiza</strong><span>Valuación PEPS automática, lote por lote</span></div>
+            </div>
+            <div class="flow-step">
+              <span class="flow-n">3</span>
+              <div><strong>Se genera el asiento</strong><span>Débito y haber balanceados, sin intervención manual</span></div>
+            </div>
+            <div class="flow-step">
+              <span class="flow-n">4</span>
+              <div><strong>El Libro Diario queda actualizado</strong><span>Trazabilidad completa de cada operación</span></div>
+            </div>
+            <div class="flow-step">
+              <span class="flow-n">5</span>
+              <div><strong>La posición fiscal de IVA se recalcula</strong><span>Débito, crédito y saldo del período, siempre al día</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-grid">
+          <div class="feature-card reveal">
+            <span class="feature-icon">
+              <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            </span>
+            <h3>Libro Diario automatizado</h3>
+            <p>Los asientos se generan automáticamente con cada operación, con contrapartidas balanceadas y trazabilidad completa.</p>
+          </div>
+          <div class="feature-card reveal" style="--d:.1s">
+            <span class="feature-icon">
+              <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            </span>
+            <h3>Inventario PEPS</h3>
+            <p>Valuación de existencias por primer entrado, primer salido: costo real y trazabilidad por lote en cada salida.</p>
+          </div>
+          <div class="feature-card reveal" style="--d:.2s">
+            <span class="feature-icon">
+              <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 5L5 19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+            </span>
+            <h3>Liquidación de IVA</h3>
+            <p>Débito y crédito fiscal calculados en tiempo real, con la posición del período siempre actualizada.</p>
+          </div>
+          <div class="feature-card reveal" style="--d:.3s">
+            <span class="feature-icon">
+              <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+            </span>
+            <h3>Control de vencimientos</h3>
+            <p>Cuotas, cobros y pagos monitoreados con alertas anticipadas para que nada se venza sin aviso.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════ 03 · MÓDULOS ══════════════════ -->
+    <section id="modulos" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow reveal"><span class="eyebrow-num">03</span>Módulos del sistema</span>
+          <h2 class="reveal" style="--d:.08s">Cinco áreas operativas, una sola fluidez</h2>
+          <p class="section-lead reveal" style="--d:.14s">
+            Los módulos del Simulador trabajan en conjunto: lo que ocurre en uno se refleja
+            instantáneamente en los demás. Explore cada tarjeta para ver sus funcionalidades.
+          </p>
+        </div>
+
+        <div class="modules-grid">
+
+          <article class="module-card reveal">
+            <div class="module-top">
+              <span class="module-icon">
+                <svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.4-3 8.2-7 9.5-4-1.3-7-5.1-7-9.5V6l7-3z"/><circle cx="12" cy="10.5" r="1.6"/><path d="M12 12.2v3"/></svg>
+              </span>
+              <span class="module-num">01</span>
+            </div>
+            <h3>Autenticación y Accesos</h3>
+            <p>Ingreso seguro al sistema con roles diferenciados que adaptan la experiencia según el perfil del usuario.</p>
+            <ul class="module-tags"><li>Seguridad</li><li>Roles</li></ul>
+            <button class="module-toggle" type="button" aria-expanded="false" aria-controls="mod-details-1">
+              <span class="toggle-text">Ver funcionalidades</span>
+              <svg class="chev" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="module-details" id="mod-details-1">
+              <div class="module-details-inner">
+                <ul>
+                  <li>Inicio de sesión con usuario y contraseña por perfil.</li>
+                  <li>Rol Alumno: acceso a operaciones y consultas de práctica.</li>
+                  <li>Rol Administrador: gestión completa de datos, respaldos y usuarios.</li>
+                  <li>Cada perfil ve únicamente lo que su rol habilita.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="module-card reveal" style="--d:.08s">
+            <div class="module-top">
+              <span class="module-icon">
+                <svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2.5 3.5h2.2l2.6 12.4h11.4l2.4-9H6"/></svg>
+              </span>
+              <span class="module-num">02</span>
+            </div>
+            <h3>Gestión de Compras y Proveedores</h3>
+            <p>Registro de operaciones con proveedores y liquidación automática del Libro IVA Compras.</p>
+            <ul class="module-tags"><li>IVA crédito</li><li>Proveedores</li></ul>
+            <button class="module-toggle" type="button" aria-expanded="false" aria-controls="mod-details-2">
+              <span class="toggle-text">Ver funcionalidades</span>
+              <svg class="chev" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="module-details" id="mod-details-2">
+              <div class="module-details-inner">
+                <ul>
+                  <li>Registro de facturas de compra con detalle de renglones.</li>
+                  <li>Libro IVA Compras con cálculo automático del crédito fiscal.</li>
+                  <li>Alta y administración de proveedores (CUIT, condiciones).</li>
+                  <li>Actualización automática de stock y costos al registrar.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="module-card reveal" style="--d:.16s">
+            <div class="module-top">
+              <span class="module-icon">
+                <svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 7l-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg>
+              </span>
+              <span class="module-num">03</span>
+            </div>
+            <h3>Ventas, Clientes y Semáforo Financiero</h3>
+            <p>Facturación, cuentas corrientes y semáforo financiero con alertas de morosidad por cliente.</p>
+            <ul class="module-tags"><li>IVA débito</li><li>Cobranzas</li></ul>
+            <button class="module-toggle" type="button" aria-expanded="false" aria-controls="mod-details-3">
+              <span class="toggle-text">Ver funcionalidades</span>
+              <svg class="chev" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="module-details" id="mod-details-3">
+              <div class="module-details-inner">
+                <ul>
+                  <li>Facturación de ventas con clientes y condiciones de pago.</li>
+                  <li>Libro IVA Ventas con débito fiscal en tiempo real.</li>
+                  <li>Semáforo financiero: verde, amarillo y rojo por antigüedad de deuda.</li>
+                  <li>Alertas de morosidad y control de cuentas corrientes.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="module-card reveal" style="--d:.24s">
+            <div class="module-top">
+              <span class="module-icon">
+                <svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              </span>
+              <span class="module-num">04</span>
+            </div>
+            <h3>Operaciones y Automatización Contable</h3>
+            <p>Visor de PDF integrado y generación automática de asientos en el Libro Diario.</p>
+            <ul class="module-tags"><li>PDF</li><li>Libro Diario</li></ul>
+            <button class="module-toggle" type="button" aria-expanded="false" aria-controls="mod-details-4">
+              <span class="toggle-text">Ver funcionalidades</span>
+              <svg class="chev" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="module-details" id="mod-details-4">
+              <div class="module-details-inner">
+                <ul>
+                  <li>Visor de PDF integrado para consultar comprobantes sin salir del sistema.</li>
+                  <li>Generación automática de asientos en el Libro Diario por cada operación.</li>
+                  <li>Efecto dominó: un clic actualiza stock, asientos e impuestos.</li>
+                  <li>Consulta del Libro Diario con filtros por fecha y cuenta.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="module-card reveal" style="--d:.32s">
+            <div class="module-top">
+              <span class="module-icon">
+                <svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+              </span>
+              <span class="module-num">05</span>
+            </div>
+            <h3>Tesorería, Stock y Análisis Comparativo</h3>
+            <p>Valuación PEPS del stock y gráfico de posición fiscal de IVA para el análisis comparativo.</p>
+            <ul class="module-tags"><li>PEPS</li><li>Tesorería</li></ul>
+            <button class="module-toggle" type="button" aria-expanded="false" aria-controls="mod-details-5">
+              <span class="toggle-text">Ver funcionalidades</span>
+              <svg class="chev" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="module-details" id="mod-details-5">
+              <div class="module-details-inner">
+                <ul>
+                  <li>Valuación de inventario PEPS con costo por lote.</li>
+                  <li>Tesorería: control de cobros, pagos y vencimientos.</li>
+                  <li>Gráfico de posición fiscal de IVA (débito vs. crédito por período).</li>
+                  <li>Análisis comparativo entre períodos para la toma de decisiones.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════ 04 · COMPARATIVA ══════════════════ -->
+    <section id="comparativa" class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow reveal"><span class="eyebrow-num">04</span>Comparativa</span>
+          <h2 class="reveal" style="--d:.08s">¿Por qué SurTech supera a Excel?</h2>
+          <p class="section-lead reveal" style="--d:.14s">
+            Las planillas cumplieron su ciclo. El Simulador Contable convierte la gestión
+            en un proceso automatizado, auditable y seguro.
+          </p>
+        </div>
+
+        <div class="table-card reveal">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th scope="col">Capacidad</th>
+                <th scope="col" class="col-excel">Planillas tradicionales (Excel)</th>
+                <th scope="col" class="col-surtech">Simulador Contable SurTech</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Automatización de operaciones</th>
+                <td class="cell-excel" data-label="Excel"><span class="mark mark-no" aria-hidden="true">✗</span>Fórmulas y referencias manuales, propensas a errores de tipeo.</td>
+                <td class="cell-surtech" data-label="SurTech"><span class="mark mark-yes" aria-hidden="true">✓</span>Un solo clic dispara el efecto dominó: stock y asientos del Libro Diario se actualizan solos.</td>
+              </tr>
+              <tr>
+                <th scope="row">Cálculo impositivo</th>
+                <td class="cell-excel" data-label="Excel"><span class="mark mark-no" aria-hidden="true">✗</span>El IVA se recalcula a mano en cada planilla.</td>
+                <td class="cell-surtech" data-label="SurTech"><span class="mark mark-yes" aria-hidden="true">✓</span>Liquidación de IVA en tiempo real con cada comprobante registrado.</td>
+              </tr>
+              <tr>
+                <th scope="row">Control de inventario</th>
+                <td class="cell-excel" data-label="Excel"><span class="mark mark-no" aria-hidden="true">✗</span>Planillas sin criterio de valuación uniforme.</td>
+                <td class="cell-surtech" data-label="SurTech"><span class="mark mark-yes" aria-hidden="true">✓</span>Inventario profesional con valuación PEPS y trazabilidad por lote.</td>
+              </tr>
+              <tr>
+                <th scope="row">Gestión de cobranzas</th>
+                <td class="cell-excel" data-label="Excel"><span class="mark mark-no" aria-hidden="true">✗</span>Seguimiento manual de deudores y vencimientos.</td>
+                <td class="cell-surtech" data-label="SurTech"><span class="mark mark-yes" aria-hidden="true">✓</span>Semáforo financiero con alertas de morosidad y control de vencimientos.</td>
+              </tr>
+              <tr>
+                <th scope="row">Seguridad de los datos</th>
+                <td class="cell-excel" data-label="Excel"><span class="mark mark-no" aria-hidden="true">✗</span>Celdas que se borran o sobrescriben sin dejar rastro.</td>
+                <td class="cell-surtech" data-label="SurTech"><span class="mark mark-yes" aria-hidden="true">✓</span>Base de datos relacional SQLite: integridad referencial y trazabilidad garantizadas.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-note reveal">
+          Comparativa elaborada sobre los flujos contables del ciclo compras – ventas – IVA del Simulador Contable SurTech V2.1.
+        </p>
+      </div>
+    </section>
+
+    <!-- ══════════════════ CTA FINAL ══════════════════ -->
+    <section class="cta-band">
+      <div class="container">
+        <div class="cta-inner reveal">
+          <div>
+            <span class="eyebrow"><span class="eyebrow-num">▶</span>Presentaciones</span>
+            <h2>¿Vemos el Simulador en acción?</h2>
+            <p>Coordiná una demostración en vivo para tu cátedra o institución y descubrí el efecto dominó operando en tiempo real.</p>
+          </div>
+          <button class="btn btn-primary btn-lg" type="button" data-open-modal>
+            Solicitar Presentación
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══════════════════ FOOTER ══════════════════ -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="#inicio" class="brand" aria-label="SurTech — volver arriba">
+          <svg viewBox="0 0 48 48" width="30" height="30" aria-hidden="true">
+            <defs>
+              <linearGradient id="lg-foot" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#FB923C"/><stop offset="1" stop-color="#EA580C"/>
+              </linearGradient>
+            </defs>
+            <rect x="3" y="3" width="42" height="42" rx="12" fill="url(#lg-foot)"/>
+            <path d="M30.5 16.5c-1.6-2-4-3.2-7-3.2-4.4 0-7.2 2.4-7.2 5.5 0 3.1 2.5 4.6 7.2 5.7 4.7 1 7.2 2.5 7.2 5.6 0 3.1-2.8 5.5-7.2 5.5-3 0-5.5-1.2-7.1-3.2" fill="none" stroke="#0F172A" stroke-width="3.4" stroke-linecap="round"/>
+          </svg>
+          <span class="brand-word">Sur<span>Tech</span></span>
+        </a>
+        <p>
+          Desarrollado por <strong>SurTech</strong> para la Cátedra de Administración y Contabilidad —
+          Escuela Superior «El Nacional».
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Producto</h4>
+        <ul class="footer-links">
+          <li><a href="#producto">El Producto</a></li>
+          <li><a href="#modulos">Módulos del Sistema</a></li>
+          <li><a href="#comparativa">Comparativa vs. Excel</a></li>
+          <li><a href="#" data-open-modal>Solicitar Presentación</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul class="footer-links">
+          <li>
+            <a class="mail" href="mailto:surtech.lacarlota@gmail.com">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;margin-right:6px"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
+              surtech.lacarlota@gmail.com
+            </a>
+          </li>
+          <li>
+            <a href="#inicio">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;margin-right:6px"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Escuela Superior «El Nacional»
+            </a>
+          </li>
+          <li>
+            <a href="#inicio">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;margin-right:6px"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              Lun. a vie. de 9 a 17 h
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-legal">
+        <h4>Aviso legal</h4>
+        <p>
+          El Simulador Contable SurTech V2.1 es un desarrollo académico de SurTech. Su uso está
+          destinado a fines educativos y de demostración. Los datos se procesan y almacenan
+          localmente en el equipo del usuario.
+        </p>
+        <p class="footer-legal-links">
+          <a href="#">Política de privacidad</a> · <a href="#">Términos de uso</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <span>© 2026 SurTech — Simulador Contable SurTech V2.1 · Todos los derechos reservados.</span>
+        <span>Hecho con rigor contable y precisión transaccional.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══════════════════ MODAL · SOLICITAR PRESENTACIÓN ══════════════════ -->
+  <div class="modal-overlay" id="modal-overlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" type="button" aria-label="Cerrar diálogo">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
+      </button>
+
+      <div id="modal-form-view">
+        <span class="eyebrow"><span class="eyebrow-num">▶</span>Presentaciones</span>
+        <h3 id="modal-title">Solicitar una Presentación</h3>
+        <p class="modal-lead">
+          Deje sus datos y el equipo de SurTech coordinará una demostración en vivo del
+          Simulador Contable (modalidad presencial o virtual).
+        </p>
+
+        <form id="presentation-form" novalidate>
+          <div class="form-grid">
+            <label>Nombre y apellido *
+              <input type="text" name="nombre" autocomplete="name" required placeholder="Ej.: María González">
+            </label>
+            <label>Email institucional *
+              <input type="email" name="email" autocomplete="email" required placeholder="nombre@institucion.edu.ar">
+            </label>
+            <label>Institución / Empresa
+              <input type="text" name="institucion" autocomplete="organization" placeholder="Ej.: Escuela Superior «El Nacional»">
+            </label>
+            <label>Rol
+              <select name="rol">
+                <option value="docente">Docente</option>
+                <option value="alumno">Alumno</option>
+                <option value="directivo">Directivo institucional</option>
+                <option value="profesional">Profesional contable</option>
+                <option value="otro">Otro</option>
+              </select>
+            </label>
+          </div>
+          <label class="full">Mensaje (opcional)
+            <textarea name="mensaje" rows="3" placeholder="Cuéntenos sobre su cátedra o institución…"></textarea>
+          </label>
+          <button type="submit" class="btn btn-primary btn-block">
+            Enviar solicitud
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          </button>
+          <p class="form-note">
+            Respuesta dentro de las 48 h hábiles. Sus datos se utilizan únicamente para
+            coordinar la presentación.
+          </p>
+        </form>
+      </div>
+
+      <div class="modal-success" id="modal-success" hidden>
+        <span class="success-ico">
+          <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+        </span>
+        <h3>¡Solicitud enviada!</h3>
+        <p>
+          Gracias por su interés. El equipo de SurTech se pondrá en contacto dentro de las
+          próximas 48 horas hábiles para coordinar la presentación.
+        </p>
+        <button class="btn btn-primary" type="button" data-close-modal>Entendido</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ VOLVER ARRIBA ══════════════════ -->
+  <button class="to-top" id="to-top" type="button" aria-label="Volver arriba">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
+  </button>
+
+  <noscript>
+    <style>
+      .reveal { opacity: 1; transform: none; }
+      .bar { transform: scaleY(1); }
+    </style>
+  </noscript>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
