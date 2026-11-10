@@ -19,9 +19,11 @@ la gestión contable y académica.
 ## Tecnología
 
 HTML, CSS y JavaScript puro, sin frameworks ni dependencias. Tipografía Inter
-(Google Fonts con fallback del sistema). Diseño responsive (móvil, tablet y PC)
-con paleta extraída del logo oficial de SurTech: pizarra `#0F172A`, naranja
-SurTech `#FE6901`, gris de marca `#555555` y azul tecnológico `#0EA5E9`.
+(Google Fonts con fallback del sistema) y fuente mono para cifras y etiquetas
+técnicas. Diseño responsive (móvil, tablet y PC) con estética minimalista y
+financiera: paleta extraída del logo oficial de SurTech (pizarra `#0F172A`,
+naranja `#FE6901`, gris `#555555`, azul `#0EA5E9`), superficies planas, líneas
+finas y el logo reducido a un detalle de 22 px en navbar y footer.
 
 ## Desarrollo local
 
